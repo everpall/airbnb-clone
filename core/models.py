@@ -1,4 +1,5 @@
 from django.db import models
+from . import managers
 
 
 class TimeStampedModel(models.Model):
@@ -7,6 +8,7 @@ class TimeStampedModel(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)  # 모델이 추가될때만 갱신
     updated = models.DateTimeField(auto_now=True)  # 매번 갱신
+    objects = managers.CustomModelManager()
 
     # 해당 모델이 데이터베이스로 가기를 원하지 않음
     class Meta:
